@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :applications
+  resources :applications do
+    resources :events
+  end
 
   devise_for :users
   root to: 'welcome#index'
