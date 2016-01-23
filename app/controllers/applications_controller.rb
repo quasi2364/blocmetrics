@@ -1,4 +1,6 @@
 class ApplicationsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @applications = Application.where(user: current_user)
   end

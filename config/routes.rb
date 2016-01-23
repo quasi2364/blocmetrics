@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  resources :applications do
-    resources :events
-  end
 
   devise_for :users
+  resources :applications
+  
+  namespace :api, defaults: {format: :json} do
+    match '/events', to: 'events#preflight', via: [:options]
+    resources :events, only: [:create]  
+  end
+
   root to: 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
