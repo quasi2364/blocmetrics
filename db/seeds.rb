@@ -1,5 +1,5 @@
 
-15.times do
+5.times do
 	user = User.create!(
 		email: Faker::Internet.free_email,
 		password: "password"
@@ -13,7 +13,7 @@ user = User.create!(
 
 users = User.all
 
-25.times do
+10.times do
 	app = Application.create!(
 		name: Faker::App.name,
 		url: Faker::Internet.url,
@@ -23,11 +23,12 @@ end
 apps = Application.all
 
 200.times do
-	i = rand(1..5)
+	event_names = ["Checkout", "Page Visit", "Sign Up", "Confirmation Page"]
 	event = Event.create!(
-		name: "event #{i}",
+		name: event_names.sample,
 		application: apps.sample
 	)
+	event.update_attribute(:created_at, rand(10.minutes..1.month).ago)
 end
 events = Event.all
 
