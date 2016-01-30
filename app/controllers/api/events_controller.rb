@@ -1,6 +1,7 @@
 class API::EventsController < ApplicationController
-	before_action :set_access_control_headers
 	skip_before_action :verify_authenticity_token
+	before_action :set_access_control_headers
+	
 
 	def set_access_control_headers
 		headers['Access-Control-Allow-Origin'] = '*'
@@ -18,6 +19,7 @@ class API::EventsController < ApplicationController
 			if @event.save
 				render json: @event, status: :created
 			else 
+				render json: "Hello"
 				render json: {errors: @event.errors}, status: :unprocessable_entity
 			end
 		end

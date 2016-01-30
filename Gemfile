@@ -36,5 +36,9 @@ gem 'devise'
 gem 'pundit'
 gem 'faker'
 gem 'redcarpet'
+gem 'chartkick'
+gem 'groupdate'
+gem 'byebug'
+gem 'pg'
 
 
